@@ -7,7 +7,8 @@ class WeatherApiFunc():
     def __init__(self):
         pass
 
-    def maxTemp(self):
+    @staticmethod
+    def maxTemp():
         weather = requests.post("https://tues2022.proxy.beeceptor.com/my/api/test").json()["data"]
         maxTmp = weather[0]["temperature"]
         for day in weather:
@@ -15,12 +16,13 @@ class WeatherApiFunc():
                 maxTmp = day["temperature"]
         return maxTmp
 
-
-    def avgTemp(self):
+    @staticmethod
+    def avgTemp():
         weather = requests.post("https://tues2022.proxy.beeceptor.com/my/api/test").json()["data"]
         return sum([day["temperature"] for day in weather])/len(weather)
 
-    def minTemp(self):
+    @staticmethod
+    def minTemp():
         weather = requests.post("https://tues2022.proxy.beeceptor.com/my/api/test").json()["data"]
         minTmp = weather[0]["temperature"]
         for day in weather:
